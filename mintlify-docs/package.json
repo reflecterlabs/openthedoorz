@@ -16,6 +16,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "mintlify": "^4.0.0"
+    "mintlify": "^3.0.98"
   }
 }
