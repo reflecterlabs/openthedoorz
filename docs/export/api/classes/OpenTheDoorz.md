@@ -2,25 +2,25 @@
 
 ***
 
-[starkzap](../globals.md) / StarkZap
+[starkzap](../globals.md) / OpenTheDoorz
 
-# Class: StarkZap
+# Class: OpenTheDoorz
 
-Defined in: [src/sdk.ts:79](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/sdk.ts#L79)
+Defined in: [src/sdk.ts:82](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L82)
 
-Main SDK class for Starknet wallet integration.
+Main SDK class for Open The Doorz financial infrastructure.
 
 ## Example
 
 ```ts
-import { StarkZap, StarkSigner, ArgentPreset } from "starkzap";
+import { OpenTheDoorz, StarkSigner, ArgentPreset } from "@openthedoorz/sdk";
 
 // Using network presets (recommended)
-const sdk = new StarkZap({ network: "mainnet" });
-const sdk = new StarkZap({ network: "sepolia" });
+const sdk = new OpenTheDoorz({ network: "mainnet" });
+const sdk = new OpenTheDoorz({ network: "sepolia" });
 
 // Or with custom RPC
-const sdk = new StarkZap({
+const sdk = new OpenTheDoorz({
   rpcUrl: "https://my-rpc.example.com",
   chainId: ChainId.MAINNET,
 });
@@ -40,9 +40,9 @@ await tx.wait();
 
 ### Constructor
 
-> **new StarkZap**(`config`): `StarkZap`
+> **new OpenTheDoorz**(`config`): `OpenTheDoorz`
 
-Defined in: [src/sdk.ts:84](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/sdk.ts#L84)
+Defined in: [src/sdk.ts:90](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L90)
 
 #### Parameters
 
@@ -52,7 +52,35 @@ Defined in: [src/sdk.ts:84](https://github.com/keep-starknet-strange/x/blob/5e54
 
 #### Returns
 
-`StarkZap`
+`OpenTheDoorz`
+
+## Properties
+
+### banking
+
+> `readonly` **banking**: [`VirtualAccountsService`](VirtualAccountsService.md)
+
+Defined in: [src/sdk.ts:86](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L86)
+
+***
+
+### onramp
+
+> `readonly` **onramp**: `object`
+
+Defined in: [src/sdk.ts:87](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L87)
+
+#### spei
+
+> **spei**: [`SPEIProvider`](SPEIProvider.md)
+
+***
+
+### defi
+
+> `readonly` **defi**: [`DeFiYieldService`](DeFiYieldService.md)
+
+Defined in: [src/sdk.ts:88](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L88)
 
 ## Methods
 
@@ -60,7 +88,7 @@ Defined in: [src/sdk.ts:84](https://github.com/keep-starknet-strange/x/blob/5e54
 
 > **connectWallet**(`options`): `Promise`\<[`Wallet`](Wallet.md)\>
 
-Defined in: [src/sdk.ts:208](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/sdk.ts#L208)
+Defined in: [src/sdk.ts:219](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L219)
 
 Connect a wallet using the specified signer and account configuration.
 
@@ -77,7 +105,7 @@ Connect a wallet using the specified signer and account configuration.
 #### Example
 
 ```ts
-import { StarkSigner, OpenZeppelinPreset, ArgentPreset } from "starkzap";
+import { StarkSigner, OpenZeppelinPreset, ArgentPreset } from "@openthedoorz/sdk";
 
 // Default: OpenZeppelin account
 const wallet = await sdk.connectWallet({
@@ -116,7 +144,7 @@ const wallet = await sdk.connectWallet({
 
 > **onboard**(`options`): `Promise`\<[`OnboardResult`](../interfaces/OnboardResult.md)\<[`WalletInterface`](../interfaces/WalletInterface.md)\>\>
 
-Defined in: [src/sdk.ts:248](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/sdk.ts#L248)
+Defined in: [src/sdk.ts:267](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L267)
 
 High-level onboarding API for app integrations.
 
@@ -143,7 +171,7 @@ By default, onboarding calls `wallet.ensureReady({ deploy: "if_needed" })`.
 
 > **connectCartridge**(`options?`): `Promise`\<`CartridgeWalletInterface`\>
 
-Defined in: [src/sdk.ts:372](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/sdk.ts#L372)
+Defined in: [src/sdk.ts:406](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L406)
 
 Connect using Cartridge Controller.
 
@@ -183,7 +211,7 @@ controller.openProfile();
 
 > **stakingTokens**(): `Promise`\<[`Token`](../interfaces/Token.md)[]\>
 
-Defined in: [src/sdk.ts:413](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/sdk.ts#L413)
+Defined in: [src/sdk.ts:447](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L447)
 
 Get all tokens that are currently enabled for staking.
 
@@ -214,7 +242,7 @@ console.log(`Stakeable tokens: ${tokens.map(t => t.symbol).join(', ')}`);
 
 > **getStakerPools**(`staker`): `Promise`\<[`Pool`](../interfaces/Pool.md)[]\>
 
-Defined in: [src/sdk.ts:436](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/sdk.ts#L436)
+Defined in: [src/sdk.ts:470](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L470)
 
 Get all delegation pools managed by a specific validator.
 
@@ -253,15 +281,15 @@ for (const pool of pools) {
 
 ### getProvider()
 
-> **getProvider**(): `RpcProvider`
+> **getProvider**(): [`RpcProvider`](../interfaces/RpcProvider.md)
 
-Defined in: [src/sdk.ts:447](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/sdk.ts#L447)
+Defined in: [src/sdk.ts:481](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L481)
 
 Get the underlying RPC provider.
 
 #### Returns
 
-`RpcProvider`
+[`RpcProvider`](../interfaces/RpcProvider.md)
 
 ***
 
@@ -269,7 +297,7 @@ Get the underlying RPC provider.
 
 > **callContract**(`call`): `Promise`\<`string`[]\>
 
-Defined in: [src/sdk.ts:457](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/sdk.ts#L457)
+Defined in: [src/sdk.ts:491](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/sdk.ts#L491)
 
 Call a read-only contract entrypoint using the SDK provider.
 

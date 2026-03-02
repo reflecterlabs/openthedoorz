@@ -8,7 +8,7 @@
 
 > `const` **sepoliaValidators**: `object`
 
-Defined in: [src/staking/validator/presets.sepolia.ts:11](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/staking/validator/presets.sepolia.ts#L11)
+Defined in: [src/staking/validator/presets.sepolia.ts:11](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/staking/validator/presets.sepolia.ts#L11)
 
 ## Type Declaration
 

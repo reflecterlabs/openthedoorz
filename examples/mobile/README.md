@@ -1,6 +1,6 @@
-# Starkzap Mobile Example (Expo)
+# Open The Doorz Mobile Example (Expo)
 
-React Native + Expo app showing how to integrate `starkzap` in a mobile client.
+React Native + Expo app showing how to integrate Open The Doorz SDK in a mobile client.
 
 ## What this app demonstrates
 
@@ -72,7 +72,7 @@ Notes:
 
 - AVNU source: uses `GET /swap/v3/quotes` + `POST /swap/v3/build` from `https://starknet.api.avnu.fi`, then executes via `wallet.swap(...)`.
 - Ekubo source: fetches quote from `https://prod-api-quoter.ekubo.org` and builds router calls (`transfer` + `swap/multihop` + `clear_minimum` + `clear`).
-- Swap backends are pluggable through a shared TypeScript contract (`SwapProvider`) from `starkzap`, with app-level extensions in `swaps/interface.ts`.
+- Swap backends are pluggable through a shared TypeScript contract (`SwapProvider`) from the SDK, with app-level extensions in `swaps/interface.ts`.
 - Active integrations are registered in `swaps/index.ts` and rendered through one common UI.
 - Token selection is sourced from preset token lists for the active network, with in-modal search.
 - On Sepolia, the Swap tab defaults to `USDC.e` instead of `USDC` because `USDC` routes are often unavailable on Ekubo testnet.

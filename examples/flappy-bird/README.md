@@ -1,10 +1,10 @@
-# Floppy Bird × Starknet (StarkZap SDK)
+# Floppy Bird × Starknet (Open The Doorz SDK)
 
-This example **forks [nebez/floppybird](https://github.com/nebez/floppybird)** (implementation and assets) and adds **StarkZap SDK** + **Cartridge Controller** for on-chain score and leaderboard. Each user is assigned a Starknet account via the Cartridge Controller. The score of each user is recorded on Starknet. Connect with Cartridge (social login / passkey), play the original Floppy Bird game, and your score is recorded on Starknet Sepolia with gasless transactions.
+This example **forks [nebez/floppybird](https://github.com/nebez/floppybird)** (implementation and assets) and adds **Open The Doorz SDK** + **Cartridge Controller** for on-chain score and leaderboard. Each user is assigned a Starknet account via the Cartridge Controller. The score of each user is recorded on Starknet. Connect with Cartridge (social login / passkey), play the original Floppy Bird game, and your score is recorded on Starknet Sepolia with gasless transactions.
 
 ## Docs
 
-- [StarkZap Overview](https://docs.starknet.io/build/starkzap) — SDK intro and architecture  
+- [Open The Doorz Guide](../../docs/guide.md) — SDK intro and architecture  
 - [Quick Start](https://docs.starknet.io/build/starkzap/quick-start) — First wallet integration  
 - [Cartridge Controller](https://docs.starknet.io/build/starkzap/integrations/cartridge-controller) — Gaming wallet and gasless policies  
 - [Examples](https://docs.starknet.io/build/starkzap/examples) — Web, mobile, server examples  
@@ -75,8 +75,8 @@ If you see **`requestStorageAccess not allowed`** or **`Request denied because t
 ## What's in this fork
 
 - **Game:** Full [nebez/floppybird](https://github.com/nebez/floppybird) — same HTML, CSS, JS, and assets (bird, pipes, sky, sounds, fonts, etc.) from the `gh-pages` branch.
-- **Integration:** `public/js/main.js` is patched with hooks (`__starknetOnScore`, `__starknetOnGameOver`, `__starknetOnStart`, `__starknetCanStart`) so the StarkZap bundle can sync score and game-over to the chain and gate play on wallet connection.
-- **StarkZap:** `main.ts` + `starknet.ts` use `StarkZap`, `OnboardStrategy.Cartridge`, `wallet.execute()` for game contract calls, and `wallet.getProvider()` + Contract for leaderboard reads.
+- **Integration:** `public/js/main.js` is patched with hooks (`__starknetOnScore`, `__starknetOnGameOver`, `__starknetOnStart`, `__starknetCanStart`) so the SDK bundle can sync score and game-over to the chain and gate play on wallet connection.
+- **Open The Doorz SDK:** `main.ts` + `starknet.ts` use `OpenTheDoorz`, `OnboardStrategy.Cartridge`, `wallet.execute()` for game contract calls, and `wallet.getProvider()` + Contract for leaderboard reads.
 
 ## Architecture
 
@@ -146,7 +146,7 @@ flowchart TB
 ## Stack
 
 - **Vite + TypeScript** — Entry and StarkZap wiring; game is vanilla JS from floppybird.
-- **Starkzap SDK (`starkzap`)** — `StarkZap`, `OnboardStrategy.Cartridge`, `networks`, `wallet.execute()`, `wallet.getProvider()`, `wallet.address`, `wallet.disconnect()`, Cartridge `username()`. Config: `new StarkZap({ network: "sepolia" })`; explorer from `networks.sepolia.explorerUrl`.
+- **Open The Doorz SDK (`starkzap` compatibility package)** — `OpenTheDoorz`, `OnboardStrategy.Cartridge`, `networks`, `wallet.execute()`, `wallet.getProvider()`, `wallet.address`, `wallet.disconnect()`, Cartridge `username()`. Config: `new OpenTheDoorz({ network: "sepolia" })`; explorer from `networks.sepolia.explorerUrl`.
 - **Game contract** — Demo contract on Starknet Sepolia: `start_new_game`, `increment_score`, `end_game`, plus view functions for high score and leaderboard. Address: `0x03730b941e8d3ece030a4a0d5f1008f34fbde0976e86577a78648c8b35079464`.
 
 ## What this example uses outside StarkZap

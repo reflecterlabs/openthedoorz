@@ -1,7 +1,7 @@
 {
   "name": "consumer-app-sdk-docs",
   "version": "1.0.0",
-  "description": "Mintlify documentation for Starkzap",
+  "description": "Mintlify documentation for Open The Doorz SDK",
   "scripts": {
     "dev": "mintlify dev",
     "build": "mintlify build",

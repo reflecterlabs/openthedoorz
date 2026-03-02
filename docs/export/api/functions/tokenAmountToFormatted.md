@@ -8,7 +8,7 @@
 
 > **tokenAmountToFormatted**(`compressed?`, `balance`, `decimals`, `symbol`): `string`
 
-Defined in: [src/types/amount.ts:701](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/amount.ts#L701)
+Defined in: [src/types/amount.ts:855](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/amount.ts#L855)
 
 Formats a token amount for display in the UI with locale-aware number formatting.
 
@@ -47,13 +47,6 @@ Token symbol to append (e.g., "ETH", "STRK")
 `string`
 
 Locale-formatted string with symbol
-
-## Remarks
-
-Current implementation converts to float for formatting, which may lose precision
-for very large or very precise values. A future improvement would use
-`Intl.NumberFormat.formatToParts` for lossless formatting, but this is not
-currently polyfilled for React Native.
 
 ## Example
 

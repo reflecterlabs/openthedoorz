@@ -6,7 +6,7 @@
 
 # Interface: AccountClassConfig
 
-Defined in: [src/types/wallet.ts:25](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L25)
+Defined in: [src/types/wallet.ts:26](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L26)
 
 Configuration for an account contract class.
 Use presets like `OpenZeppelinPreset` or define your own.
@@ -15,7 +15,7 @@ Use presets like `OpenZeppelinPreset` or define your own.
 
 ```ts
 // Use a preset
-import { OpenZeppelinPreset } from "starkzap";
+import { OpenZeppelinPreset } from "@openthedoorz/sdk";
 { accountClass: OpenZeppelinPreset }
 
 // Or define custom
@@ -33,7 +33,7 @@ import { OpenZeppelinPreset } from "starkzap";
 
 > **classHash**: `string`
 
-Defined in: [src/types/wallet.ts:27](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L27)
+Defined in: [src/types/wallet.ts:28](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L28)
 
 Account contract class hash
 
@@ -43,7 +43,7 @@ Account contract class hash
 
 > **buildConstructorCalldata**: (`publicKey`) => `Calldata`
 
-Defined in: [src/types/wallet.ts:29](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L29)
+Defined in: [src/types/wallet.ts:30](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L30)
 
 Build constructor calldata from public key
 
@@ -63,7 +63,7 @@ Build constructor calldata from public key
 
 > `optional` **getSalt**: (`publicKey`) => `string`
 
-Defined in: [src/types/wallet.ts:36](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L36)
+Defined in: [src/types/wallet.ts:37](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L37)
 
 Compute the salt for address computation.
 Default: uses public key directly (for Stark curve accounts).

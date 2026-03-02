@@ -8,7 +8,7 @@
 
 > **fromAddress**(`value`): [`Address`](../type-aliases/Address.md)
 
-Defined in: [src/types/address.ts:17](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/address.ts#L17)
+Defined in: [src/types/address.ts:17](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/address.ts#L17)
 
 Parse a Starknet address from a BigNumberish value.
 

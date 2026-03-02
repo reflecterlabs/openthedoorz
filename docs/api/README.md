@@ -2,9 +2,9 @@
 
 ***
 
-# Starkzap SDK Developer Guide
+# Open The Doorz SDK Developer Guide
 
-A full developer guide for integrating Starknet wallets with `starkzap` across web, Node.js, and mobile runtimes.
+A full developer guide for integrating Starknet wallets and financial infrastructure flows with Open The Doorz across web, Node.js, and mobile runtimes.
 
 ## Who This Guide Is For
 
@@ -13,11 +13,11 @@ Use this guide if you are:
 - Integrating Starknet account abstraction into an app.
 - Building wallet flows with private key, Privy, or Cartridge.
 - Shipping token operations, staking, and sponsored transactions.
-- Maintaining a codebase that uses `starkzap` and needs predictable patterns.
+- Maintaining a codebase that uses Open The Doorz (with `starkzap` compatibility imports when needed) and requires predictable patterns.
 
 ## What You Get in This SDK
 
-- `StarkZap` orchestration layer for provider/network/config.
+- `OpenTheDoorz` orchestration layer for provider/network/config.
 - Wallet abstraction (`WalletInterface`) with interchangeable backends.
 - Signer support for:
   - Local Stark private key (`StarkSigner`)
@@ -34,6 +34,8 @@ Use this guide if you are:
 npm install starkzap
 ```
 
+Compatibility note: current npm distribution remains `starkzap`, while the main class exported by the SDK is `OpenTheDoorz` (with `StarkZap` alias).
+
 ## Runtime Compatibility
 
 - Node.js: supported.
@@ -44,7 +46,7 @@ npm install starkzap
 
 ```ts
 import {
-  StarkZap,
+  OpenTheDoorz,
   OnboardStrategy,
   accountPresets,
   Amount,
@@ -52,7 +54,7 @@ import {
   sepoliaTokens,
 } from "starkzap";
 
-const sdk = new StarkZap({ network: "sepolia" });
+const sdk = new OpenTheDoorz({ network: "sepolia" });
 
 // Example: user is already logged in with Privy in your app
 const accessToken = await privy.getAccessToken();
@@ -150,7 +152,7 @@ const onboard = await sdk.onboard({
 
 ## Configuration Model
 
-`StarkZap` accepts either:
+`OpenTheDoorz` accepts either:
 
 - `network` preset (`"mainnet"`, `"sepolia"`, `"devnet"`), or
 - explicit `rpcUrl` + `chainId`.
@@ -162,9 +164,9 @@ Optional features:
 - `staking.contract` for staking methods.
 
 ```ts
-import { StarkZap, ChainId, fromAddress } from "starkzap";
+import { OpenTheDoorz, ChainId, fromAddress } from "starkzap";
 
-const sdk = new StarkZap({
+const sdk = new OpenTheDoorz({
   rpcUrl: "https://api.cartridge.gg/x/starknet/mainnet",
   chainId: ChainId.MAINNET,
   paymaster: { nodeUrl: "https://your-paymaster.example" },
@@ -355,7 +357,7 @@ if (ChainId.MAINNET.isMainnet()) {
 
 ### "staking.contract is not defined"
 
-Add `staking.contract` to `StarkZap` config before calling staking APIs.
+Add `staking.contract` to `OpenTheDoorz` config before calling staking APIs.
 
 ### Transaction submits but URL is missing
 

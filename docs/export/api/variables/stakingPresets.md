@@ -8,11 +8,11 @@
 
 > `const` **stakingPresets**: `object`
 
-Defined in: [src/staking/presets.ts:9](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/staking/presets.ts#L9)
+Defined in: [src/staking/presets.ts:9](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/staking/presets.ts#L9)
 
 Core staking contract presets per supported chain.
 
-These defaults are used by `StarkZap` when `staking.contract`
+These defaults are used by `OpenTheDoorz` when `staking.contract`
 is not explicitly provided in the SDK config.
 
 ## Type Declaration

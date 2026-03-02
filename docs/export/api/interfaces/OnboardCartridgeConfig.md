@@ -6,7 +6,7 @@
 
 # Interface: OnboardCartridgeConfig
 
-Defined in: [src/types/onboard.ts:67](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/onboard.ts#L67)
+Defined in: [src/types/onboard.ts:72](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/onboard.ts#L72)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [src/types/onboard.ts:67](https://github.com/keep-starknet-strange/x
 
 > `optional` **policies**: `object`[]
 
-Defined in: [src/types/onboard.ts:68](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/onboard.ts#L68)
+Defined in: [src/types/onboard.ts:73](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/onboard.ts#L73)
 
 #### target
 
@@ -30,7 +30,7 @@ Defined in: [src/types/onboard.ts:68](https://github.com/keep-starknet-strange/x
 
 > `optional` **preset**: `string`
 
-Defined in: [src/types/onboard.ts:69](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/onboard.ts#L69)
+Defined in: [src/types/onboard.ts:74](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/onboard.ts#L74)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [src/types/onboard.ts:69](https://github.com/keep-starknet-strange/x
 
 > `optional` **url**: `string`
 
-Defined in: [src/types/onboard.ts:70](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/onboard.ts#L70)
+Defined in: [src/types/onboard.ts:75](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/onboard.ts#L75)
 
 ***
 
@@ -46,4 +46,4 @@ Defined in: [src/types/onboard.ts:70](https://github.com/keep-starknet-strange/x
 
 > `optional` **explorer**: [`ExplorerConfig`](ExplorerConfig.md)
 
-Defined in: [src/types/onboard.ts:71](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/onboard.ts#L71)
+Defined in: [src/types/onboard.ts:76](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/onboard.ts#L76)

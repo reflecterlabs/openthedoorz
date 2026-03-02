@@ -1,5 +1,5 @@
 {
-  "name": "Starkzap",
+  "name": "Open The Doorz SDK",
   "theme": "mint",
   "favicon": "/favicon.svg",
   "colors": {
@@ -15,7 +15,7 @@
   ],
   "topbarCtaButton": {
     "name": "GitHub",
-    "url": "https://github.com/starknet-io/starknet-docs"
+    "url": "https://github.com/keep-starknet-strange/starkzap"
   },
   "anchors": [
     {
@@ -85,7 +85,7 @@
   },
   "footerSocials": {
     "twitter": "https://twitter.com/StarknetEco",
-    "github": "https://github.com/starknet-io/starknet-docs",
+    "github": "https://github.com/keep-starknet-strange/starkzap",
     "linkedin": "https://www.linkedin.com/company/starkware"
   },
   "contextual": {

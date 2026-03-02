@@ -6,7 +6,7 @@
 
 # Class: TxBuilder
 
-Defined in: [src/tx/builder.ts:52](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L52)
+Defined in: [src/tx/builder.ts:54](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L54)
 
 Fluent transaction builder for batching multiple operations into a single transaction.
 
@@ -52,7 +52,7 @@ const tx = await wallet.tx()
 
 > **new TxBuilder**(`wallet`): `TxBuilder`
 
-Defined in: [src/tx/builder.ts:59](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L59)
+Defined in: [src/tx/builder.ts:61](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L61)
 
 #### Parameters
 
@@ -72,7 +72,7 @@ Defined in: [src/tx/builder.ts:59](https://github.com/keep-starknet-strange/x/bl
 
 > **get** **length**(): `number`
 
-Defined in: [src/tx/builder.ts:106](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L106)
+Defined in: [src/tx/builder.ts:108](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L108)
 
 The number of pending operations in the builder.
 
@@ -91,7 +91,7 @@ into multiple calls once resolved.
 
 > **get** **isEmpty**(): `boolean`
 
-Defined in: [src/tx/builder.ts:113](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L113)
+Defined in: [src/tx/builder.ts:115](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L115)
 
 Whether the builder has no pending operations.
 
@@ -107,7 +107,7 @@ Whether the builder has no pending operations.
 
 > **get** **isSent**(): `boolean`
 
-Defined in: [src/tx/builder.ts:120](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L120)
+Defined in: [src/tx/builder.ts:122](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L122)
 
 Whether `send()` has already been called successfully on this builder.
 
@@ -121,7 +121,7 @@ Whether `send()` has already been called successfully on this builder.
 
 > **add**(...`calls`): `this`
 
-Defined in: [src/tx/builder.ts:148](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L148)
+Defined in: [src/tx/builder.ts:150](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L150)
 
 Add one or more raw contract calls to the transaction.
 
@@ -160,7 +160,7 @@ wallet.tx()
 
 > **approve**(`token`, `spender`, `amount`): `this`
 
-Defined in: [src/tx/builder.ts:173](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L173)
+Defined in: [src/tx/builder.ts:175](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L175)
 
 Approve an address to spend ERC20 tokens on behalf of the wallet.
 
@@ -205,7 +205,7 @@ wallet.tx()
 
 > **transfer**(`token`, `transfers`): `this`
 
-Defined in: [src/tx/builder.ts:205](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L205)
+Defined in: [src/tx/builder.ts:207](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L207)
 
 Transfer ERC20 tokens to one or more recipients.
 
@@ -251,11 +251,35 @@ wallet.tx()
 
 ***
 
+### swap()
+
+> **swap**(`request`): `this`
+
+Defined in: [src/tx/builder.ts:226](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L226)
+
+Add a provider-driven swap operation.
+
+Set `request.provider` to a provider instance or provider id.
+If omitted, uses the wallet default provider.
+`chainId` and `takerAddress` are optional and default to the connected wallet.
+
+#### Parameters
+
+##### request
+
+[`SwapInput`](../type-aliases/SwapInput.md)
+
+#### Returns
+
+`this`
+
+***
+
 ### stake()
 
 > **stake**(`poolAddress`, `amount`): `this`
 
-Defined in: [src/tx/builder.ts:247](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L247)
+Defined in: [src/tx/builder.ts:272](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L272)
 
 Stake tokens in a delegation pool, automatically choosing the right
 action based on current membership status.
@@ -305,7 +329,7 @@ await tx.wait();
 
 > **enterPool**(`poolAddress`, `amount`): `this`
 
-Defined in: [src/tx/builder.ts:278](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L278)
+Defined in: [src/tx/builder.ts:303](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L303)
 
 Enter a delegation pool as a new member.
 
@@ -349,7 +373,7 @@ wallet.tx()
 
 > **addToPool**(`poolAddress`, `amount`): `this`
 
-Defined in: [src/tx/builder.ts:306](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L306)
+Defined in: [src/tx/builder.ts:331](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L331)
 
 Add more tokens to an existing stake in a pool.
 
@@ -393,7 +417,7 @@ wallet.tx()
 
 > **claimPoolRewards**(`poolAddress`): `this`
 
-Defined in: [src/tx/builder.ts:331](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L331)
+Defined in: [src/tx/builder.ts:356](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L356)
 
 Claim accumulated staking rewards from a pool.
 
@@ -429,7 +453,7 @@ wallet.tx()
 
 > **exitPoolIntent**(`poolAddress`, `amount`): `this`
 
-Defined in: [src/tx/builder.ts:360](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L360)
+Defined in: [src/tx/builder.ts:385](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L385)
 
 Initiate an exit from a delegation pool.
 
@@ -474,7 +498,7 @@ wallet.tx()
 
 > **exitPool**(`poolAddress`): `this`
 
-Defined in: [src/tx/builder.ts:385](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L385)
+Defined in: [src/tx/builder.ts:410](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L410)
 
 Complete the exit from a delegation pool after the exit window has passed.
 
@@ -510,7 +534,7 @@ wallet.tx()
 
 > **calls**(): `Promise`\<[`Call`](../type-aliases/Call.md)[]\>
 
-Defined in: [src/tx/builder.ts:414](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L414)
+Defined in: [src/tx/builder.ts:439](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L439)
 
 Resolve all pending operations into a flat array of Calls without executing.
 
@@ -539,7 +563,7 @@ const fee = await wallet.estimateFee(calls);
 
 > **estimateFee**(): `Promise`\<`EstimateFeeResponseOverhead`\>
 
-Defined in: [src/tx/builder.ts:437](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L437)
+Defined in: [src/tx/builder.ts:462](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L462)
 
 Estimate the fee for all collected calls.
 
@@ -568,7 +592,7 @@ console.log("Estimated fee:", fee.overall_fee);
 
 > **preflight**(): `Promise`\<[`PreflightResult`](../type-aliases/PreflightResult.md)\>
 
-Defined in: [src/tx/builder.ts:466](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L466)
+Defined in: [src/tx/builder.ts:491](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L491)
 
 Simulate the transaction to check if it would succeed.
 
@@ -604,7 +628,7 @@ if (!result.ok) {
 
 > **send**(`options?`): `Promise`\<[`Tx`](Tx.md)\>
 
-Defined in: [src/tx/builder.ts:495](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/tx/builder.ts#L495)
+Defined in: [src/tx/builder.ts:520](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/tx/builder.ts#L520)
 
 Execute all collected calls as a single atomic transaction.
 

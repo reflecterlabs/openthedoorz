@@ -1,8 +1,18 @@
-import "dotenv/config";
+import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import { PrivyClient } from "@privy-io/node";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config();
+if (!process.env.PRIVY_APP_ID || !process.env.PRIVY_APP_SECRET) {
+  dotenv.config({ path: path.resolve(__dirname, "../../.env") });
+}
 
 const PRIVY_APP_ID = process.env.PRIVY_APP_ID!;
 const PRIVY_APP_SECRET = process.env.PRIVY_APP_SECRET!;
@@ -185,6 +195,15 @@ app.post("/api/paymaster", async (req, res) => {
     console.log(`[Paymaster] Exception:`, message);
     res.status(500).json({ error: message });
   }
+});
+
+app.get("/", (_, res) => {
+  res.json({
+    service: "Open The Doorz Example Backend",
+    status: "ok",
+    frontend: "http://localhost:5174/",
+    health: "/api/health",
+  });
 });
 
 app.get("/api/health", (_, res) => res.json({ status: "ok" }));

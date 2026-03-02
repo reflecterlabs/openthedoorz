@@ -1,4 +1,4 @@
-# Starkzap — Bitcoin in your app in minutes
+# Open The Doorz — Financial infrastructure for LatAm on Starknet
 
 <img width="1200" height="675" alt="Twitter post - 3 (1)" src="https://github.com/user-attachments/assets/66df6de6-b0b8-4c83-8589-aeb53927451e" />
 
@@ -6,15 +6,15 @@
 
 ---
 
-Bring Bitcoin, stablecoins, and DeFi to any web or mobile app via Starknet in minutes. One TypeScript SDK: wallets, tokens, staking, and gasless transactions — with a clean API and great UX. Starknet’s account abstraction lets you hide blockchain complexity (no seed phrases, optional gasless flows). Works on **web** (React, Vite, etc.), **iOS & Android** (React Native, Expo), and **Node.js** backends.
+Bring neo-banking rails, on-ramp flows, treasury DeFi, and Starknet wallet infrastructure to any web or mobile app in minutes. One TypeScript SDK: onboarding, wallet abstraction, ERC20, staking, swaps, and sponsored transactions — with enterprise-ready flows for **web**, **mobile**, and **Node.js** backends.
 
-> Transition status: this repository is being evolved to **Open The Doorz** infrastructure while preserving compatibility with current `starkzap` package imports and community contribution flows.
+> This repository is now aligned to **Open The Doorz**. Backward compatibility is preserved through the `StarkZap` alias and existing `starkzap` import paths where required.
 
-**Full documentation:** [docs.starknet.io/build/starkzap](https://docs.starknet.io/build/starkzap/overview)
+**Core docs in this repo:** [docs/guide.md](docs/guide.md) · [OpenTheDoorz/ARCHITECTURE.md](OpenTheDoorz/ARCHITECTURE.md) · [OpenTheDoorz/RUNBOOK.md](OpenTheDoorz/RUNBOOK.md)
 
-**Curated list of projects using Starkzap:** [awesome-starkzap](https://github.com/keep-starknet-strange/awesome-starkzap)
+**Audit package:** [docs/AUDIT_READINESS.md](docs/AUDIT_READINESS.md)
 
-**Starkzap Debugging Group:** [telegram chat](https://t.me/+I-Vt-_DcvecwNmY0)
+**Working examples:** [examples/web](examples/web) · [examples/mobile](examples/mobile) · [examples/server](examples/server)
 
 ---
 
@@ -31,11 +31,11 @@ Peer dependencies (installed automatically with `starkzap`):
 
 For specific integrations, you may need:
 
-- **Privy** (server): `npm install @privy-io/node` — see [Privy integration](https://docs.starknet.io/build/starkzap/integrations/privy)
+- **Privy** (server): `npm install @privy-io/node` — see `examples/server`
 - **Privy** (React Native / Expo): see the [Privy docs](https://docs.privy.io) for the Expo SDK
-- **AVNU Paymaster**: no extra package; configure a paymaster URL — see [Paymasters](https://docs.starknet.io/build/starkzap/paymasters) and [AVNU integration](https://docs.starknet.io/build/starkzap/integrations/avnu-paymaster)
+- **AVNU Paymaster**: no extra package; configure a paymaster URL — see `examples/server` and `docs/guide.md`
 
-The package is published on npm as [`starkzap`](https://www.npmjs.com/package/starkzap); use `npm install starkzap` and `from "starkzap"` when not developing from this repo.
+Compatibility package usage remains `starkzap` on npm. Internally, the main class is now `OpenTheDoorz` (with `StarkZap` alias exported for compatibility).
 
 ---
 
@@ -43,7 +43,7 @@ The package is published on npm as [`starkzap`](https://www.npmjs.com/package/st
 
 ```typescript
 import {
-  StarkZap,
+  OpenTheDoorz,
   StarkSigner,
   OnboardStrategy,
   Amount,
@@ -51,7 +51,7 @@ import {
   sepoliaTokens,
 } from "starkzap";
 
-const sdk = new StarkZap({ network: "sepolia" });
+const sdk = new OpenTheDoorz({ network: "sepolia" });
 
 const { wallet } = await sdk.onboard({
   strategy: OnboardStrategy.Signer,
@@ -69,28 +69,20 @@ const tx = await wallet.transfer(STRK, [
 await tx.wait();
 ```
 
-For onboarding flows (Privy, Cartridge, etc.) and more examples, see the [Quick Start guide](https://docs.starknet.io/build/starkzap/quick-start).
+For onboarding flows (Privy, Cartridge, enterprise operations) and more examples, see [docs/guide.md](docs/guide.md).
 
 ---
 
 ## Documentation
 
-All guides and API reference live on the Starknet docs site. We recommend starting with [Quick Start](https://docs.starknet.io/build/starkzap/quick-start).
+All implementation and operations docs for this repository are tracked locally under `docs/` and `OpenTheDoorz/`.
 
-- [Overview](https://docs.starknet.io/build/starkzap/overview)
-- [Installation](https://docs.starknet.io/build/starkzap/installation)
-- [Quick Start](https://docs.starknet.io/build/starkzap/quick-start)
-- [Configuration](https://docs.starknet.io/build/starkzap/configuration)
-- [Paymasters](https://docs.starknet.io/build/starkzap/paymasters)
-- [Connecting Wallets](https://docs.starknet.io/build/starkzap/connecting-wallets)
-- [Transactions](https://docs.starknet.io/build/starkzap/transactions)
-- [ERC20 Tokens](https://docs.starknet.io/build/starkzap/erc20)
-- [Staking](https://docs.starknet.io/build/starkzap/staking)
-- [Transaction Builder](https://docs.starknet.io/build/starkzap/tx-builder)
-- [Integrations](https://docs.starknet.io/build/starkzap/integrations/avnu-paymaster) — AVNU Paymaster, Privy, Cartridge
-- [Examples](https://docs.starknet.io/build/starkzap/examples)
-- [API Reference](https://docs.starknet.io/build/starkzap/api-reference)
-- [Glossary](https://docs.starknet.io/build/starkzap/glossary) · [Troubleshooting](https://docs.starknet.io/build/starkzap/troubleshooting)
+- [SDK Guide](docs/guide.md)
+- [Audit Readiness](docs/AUDIT_READINESS.md)
+- [Architecture](OpenTheDoorz/ARCHITECTURE.md)
+- [Enterprise API](OpenTheDoorz/API_ENTERPRISE.md)
+- [Pipeline](OpenTheDoorz/PIPELINE.md)
+- [Runbook](OpenTheDoorz/RUNBOOK.md)
 
 ---
 

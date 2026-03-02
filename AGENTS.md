@@ -1,7 +1,7 @@
 # agents.md
 
 <purpose>
-Multi-agent coordination model for Starkzap tasks. Use this when work is split across planning, implementation, and review agents.
+Multi-agent coordination model for Open The Doorz tasks. Use this when work is split across planning, implementation, and review agents.
 </purpose>
 
 <roles>

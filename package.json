@@ -1,17 +1,17 @@
 {
   "name": "starkzap",
   "version": "1.0.0",
-  "description": "Helper sdk for easy wallet integration",
-  "homepage": "https://github.com/keep-starknet-strange/x#readme",
+  "description": "Open The Doorz SDK for Starknet onboarding, neo-banking rails, on-ramp and DeFi treasury flows",
+  "homepage": "https://github.com/keep-starknet-strange/starkzap#readme",
   "bugs": {
-    "url": "https://github.com/keep-starknet-strange/x/issues"
+    "url": "https://github.com/keep-starknet-strange/starkzap/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/keep-starknet-strange/x.git"
+    "url": "git+https://github.com/keep-starknet-strange/starkzap.git"
   },
   "license": "MIT",
-  "author": "0xLucqs",
+  "author": "Open The Doorz",
   "type": "module",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
@@ -48,6 +48,15 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "openthedoorz",
+    "starknet",
+    "wallet",
+    "onramp",
+    "neobanking",
+    "defi",
+    "typescript-sdk"
+  ],
   "scripts": {
     "build": "tsc; tsc-alias",
     "build:testnet": "npm run build && npm run build --prefix examples/web",

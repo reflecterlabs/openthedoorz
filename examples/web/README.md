@@ -5,7 +5,7 @@ Browser-based playground for the SDK. Demonstrates three wallet connection strat
 ## Prerequisites
 
 - Node.js 18+
-- The SDK built locally (this example references the SDK source via the `starkzap` alias in `vite.config.ts`)
+- The SDK built locally (this example references the SDK source via aliases in `vite.config.ts`)
 
 ## Quick Start
 
@@ -17,9 +17,9 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173). The Vite dev server hot-reloads both the example and the SDK source thanks to the path aliases configured in `vite.config.ts`.
+Open [http://localhost:5173](http://localhost:5173) for the landing. The Vite dev server hot-reloads both the example and the SDK source thanks to the path aliases configured in `vite.config.ts`.
 
-For the executive presentation site, open [http://localhost:5173/presentation.html](http://localhost:5173/presentation.html).
+For the operational dashboard, open [http://localhost:5173/dash](http://localhost:5173/dash).
 
 ## Project Structure
 
@@ -233,7 +233,7 @@ The app connects to Starknet Sepolia by default. To change the network, edit the
 ```typescript
 const RPC_URL = "https://api.cartridge.gg/x/starknet/sepolia/rpc/v0_9";
 
-const sdk = new StarkZap({
+const sdk = new OpenTheDoorz({
   rpcUrl: RPC_URL,
   chainId: ChainId.SEPOLIA,
 });
@@ -251,9 +251,9 @@ const PRIVY_SERVER_URL = "http://localhost:3001";
 
 ### Vite Path Aliases
 
-`vite.config.ts` maps `starkzap` to the SDK source at `../../src/index.ts` and `@` to `../../src/`. This means:
+`vite.config.ts` maps SDK imports to `../../src/index.ts` and `@` to `../../src/`. This means:
 
-- `import { StarkZap } from "starkzap"` resolves to the local SDK source, not a published npm bundle.
+- `import { OpenTheDoorz } from "starkzap"` resolves to the local SDK source, not a published npm bundle.
 - Changes to the SDK source are hot-reloaded automatically.
 - The `optimizeDeps.exclude: ["starkzap"]` setting prevents Vite from pre-bundling the SDK.
 

@@ -6,7 +6,7 @@
 
 # Interface: EnsureReadyOptions
 
-Defined in: [src/types/wallet.ts:138](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L138)
+Defined in: [src/types/wallet.ts:143](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L143)
 
 Options for `wallet.ensureReady()`.
 
@@ -26,7 +26,7 @@ await wallet.ensureReady({
 
 > `optional` **deploy**: [`DeployMode`](../type-aliases/DeployMode.md)
 
-Defined in: [src/types/wallet.ts:140](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L140)
+Defined in: [src/types/wallet.ts:145](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L145)
 
 When to deploy (default: "if_needed")
 
@@ -36,7 +36,7 @@ When to deploy (default: "if_needed")
 
 > `optional` **feeMode**: [`FeeMode`](../type-aliases/FeeMode.md)
 
-Defined in: [src/types/wallet.ts:142](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L142)
+Defined in: [src/types/wallet.ts:147](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L147)
 
 How to pay for deployment if needed (default: wallet's default)
 
@@ -46,7 +46,7 @@ How to pay for deployment if needed (default: wallet's default)
 
 > `optional` **onProgress**: (`event`) => `void`
 
-Defined in: [src/types/wallet.ts:144](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L144)
+Defined in: [src/types/wallet.ts:149](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L149)
 
 Callback for progress updates
 

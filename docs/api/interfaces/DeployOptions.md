@@ -6,7 +6,7 @@
 
 # Interface: DeployOptions
 
-Defined in: [src/types/wallet.ts:150](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L150)
+Defined in: [src/types/wallet.ts:155](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L155)
 
 Options for `wallet.deploy()`
 
@@ -16,7 +16,7 @@ Options for `wallet.deploy()`
 
 > `optional` **feeMode**: [`FeeMode`](../type-aliases/FeeMode.md)
 
-Defined in: [src/types/wallet.ts:152](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L152)
+Defined in: [src/types/wallet.ts:157](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L157)
 
 How fees are paid (default: "user_pays")
 
@@ -26,6 +26,6 @@ How fees are paid (default: "user_pays")
 
 > `optional` **timeBounds**: [`PaymasterTimeBounds`](PaymasterTimeBounds.md)
 
-Defined in: [src/types/wallet.ts:154](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L154)
+Defined in: [src/types/wallet.ts:159](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L159)
 
 Optional time bounds for paymaster-sponsored deployment

@@ -6,7 +6,7 @@
 
 # Interface: StakingConfig
 
-Defined in: [src/types/config.ts:148](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/config.ts#L148)
+Defined in: [src/types/config.ts:148](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/config.ts#L148)
 
 Configuration for the Staking module.
 
@@ -18,7 +18,7 @@ for the configured `chainId`.
 ## Example
 
 ```ts
-const sdk = new StarkZap({
+const sdk = new OpenTheDoorz({
   rpcUrl: "https://starknet-mainnet.infura.io/v3/YOUR_KEY",
   chainId: ChainId.MAINNET,
   staking: {
@@ -33,6 +33,6 @@ const sdk = new StarkZap({
 
 > **contract**: [`Address`](../type-aliases/Address.md)
 
-Defined in: [src/types/config.ts:150](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/config.ts#L150)
+Defined in: [src/types/config.ts:150](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/config.ts#L150)
 
 Address of the core staking contract (override default preset)

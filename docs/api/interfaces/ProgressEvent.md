@@ -6,7 +6,7 @@
 
 # Interface: ProgressEvent
 
-Defined in: [src/types/wallet.ts:122](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L122)
+Defined in: [src/types/wallet.ts:127](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L127)
 
 Progress event emitted during `wallet.ensureReady()`
 
@@ -16,4 +16,4 @@ Progress event emitted during `wallet.ensureReady()`
 
 > **step**: [`ProgressStep`](../type-aliases/ProgressStep.md)
 
-Defined in: [src/types/wallet.ts:123](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/types/wallet.ts#L123)
+Defined in: [src/types/wallet.ts:128](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/types/wallet.ts#L128)

@@ -6,7 +6,7 @@
 
 # Class: AccountProvider
 
-Defined in: [src/wallet/accounts/provider.ts:36](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/wallet/accounts/provider.ts#L36)
+Defined in: [src/wallet/accounts/provider.ts:36](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/wallet/accounts/provider.ts#L36)
 
 Account provider that combines a signer with an account class configuration.
 
@@ -17,7 +17,7 @@ and the account class constructor. This is the bridge between a
 ## Example
 
 ```ts
-import { AccountProvider, StarkSigner, ArgentPreset } from "starkzap";
+import { AccountProvider, StarkSigner, ArgentPreset } from "@openthedoorz/sdk";
 
 const provider = new AccountProvider(
   new StarkSigner(privateKey),
@@ -34,7 +34,7 @@ const publicKey = await provider.getPublicKey();
 
 > **new AccountProvider**(`signer`, `accountClass?`): `AccountProvider`
 
-Defined in: [src/wallet/accounts/provider.ts:46](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/wallet/accounts/provider.ts#L46)
+Defined in: [src/wallet/accounts/provider.ts:46](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/wallet/accounts/provider.ts#L46)
 
 #### Parameters
 
@@ -60,7 +60,7 @@ Account class configuration (default: [OpenZeppelinPreset](../variables/OpenZepp
 
 > **getAddress**(): `Promise`\<[`Address`](../type-aliases/Address.md)\>
 
-Defined in: [src/wallet/accounts/provider.ts:59](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/wallet/accounts/provider.ts#L59)
+Defined in: [src/wallet/accounts/provider.ts:59](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/wallet/accounts/provider.ts#L59)
 
 Compute and return the counterfactual address for this account.
 
@@ -79,7 +79,7 @@ The Starknet address for this account
 
 > **getPublicKey**(): `Promise`\<`string`\>
 
-Defined in: [src/wallet/accounts/provider.ts:84](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/wallet/accounts/provider.ts#L84)
+Defined in: [src/wallet/accounts/provider.ts:84](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/wallet/accounts/provider.ts#L84)
 
 Get the public key from the underlying signer. Cached after first call.
 
@@ -95,7 +95,7 @@ The public key as a hex string
 
 > **getSigner**(): [`SignerInterface`](../interfaces/SignerInterface.md)
 
-Defined in: [src/wallet/accounts/provider.ts:94](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/wallet/accounts/provider.ts#L94)
+Defined in: [src/wallet/accounts/provider.ts:94](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/wallet/accounts/provider.ts#L94)
 
 Get the underlying signer instance.
 
@@ -109,7 +109,7 @@ Get the underlying signer instance.
 
 > **getClassHash**(): `string`
 
-Defined in: [src/wallet/accounts/provider.ts:99](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/wallet/accounts/provider.ts#L99)
+Defined in: [src/wallet/accounts/provider.ts:99](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/wallet/accounts/provider.ts#L99)
 
 Get the account contract class hash.
 
@@ -123,7 +123,7 @@ Get the account contract class hash.
 
 > **getConstructorCalldata**(`publicKey`): `Calldata`
 
-Defined in: [src/wallet/accounts/provider.ts:104](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/wallet/accounts/provider.ts#L104)
+Defined in: [src/wallet/accounts/provider.ts:104](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/wallet/accounts/provider.ts#L104)
 
 Build the constructor calldata from the given public key.
 
@@ -143,7 +143,7 @@ Build the constructor calldata from the given public key.
 
 > **getSalt**(`publicKey`): `string`
 
-Defined in: [src/wallet/accounts/provider.ts:109](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/wallet/accounts/provider.ts#L109)
+Defined in: [src/wallet/accounts/provider.ts:109](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/wallet/accounts/provider.ts#L109)
 
 Compute the address salt from the given public key.
 
@@ -163,7 +163,7 @@ Compute the address salt from the given public key.
 
 > **getDeploymentData**(): `Promise`\<`ACCOUNT_DEPLOYMENT_DATA`\>
 
-Defined in: [src/wallet/accounts/provider.ts:118](https://github.com/keep-starknet-strange/x/blob/5e54d8974744c392df7cac56b636788dfe6ae268/src/wallet/accounts/provider.ts#L118)
+Defined in: [src/wallet/accounts/provider.ts:118](https://github.com/reflecterlabs/openthedoorz/blob/df069cde44cff04ee84c73f00c7735db5bedde11/src/wallet/accounts/provider.ts#L118)
 
 Get deployment data for paymaster-sponsored deployment.
 

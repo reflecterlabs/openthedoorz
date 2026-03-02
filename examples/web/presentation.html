@@ -14,10 +14,9 @@
       :root {
         --bg: #fdfbf7;
         --accent: #ff5733;
-        --accent-soft: #f4a261;
         --text: #2f241f;
         --muted: #6f6157;
-        --card: rgba(255, 255, 255, 0.64);
+        --card: rgba(255, 255, 255, 0.66);
         --border: rgba(255, 87, 51, 0.18);
       }
 
@@ -30,59 +29,64 @@
         font-family: "Outfit", system-ui, sans-serif;
         background:
           radial-gradient(
-            circle at 10% 0%,
-            rgba(255, 87, 51, 0.12) 0,
-            transparent 40%
+            circle at 12% 0%,
+            rgba(255, 87, 51, 0.1) 0,
+            transparent 42%
           ),
           var(--bg);
         color: var(--text);
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
       }
 
       .container {
-        max-width: 1040px;
-        margin: 0 auto;
-        padding: 40px 20px 80px;
+        width: min(760px, 92vw);
+        padding: 22px;
       }
 
       .hero {
         background: var(--card);
         border: 1px solid var(--border);
-        border-radius: 24px;
+        border-radius: 22px;
         backdrop-filter: blur(10px);
-        padding: 40px;
-        box-shadow: 0 20px 50px rgba(80, 58, 47, 0.08);
+        padding: 42px 30px;
+        box-shadow: 0 20px 45px rgba(80, 58, 47, 0.08);
+        text-align: center;
       }
 
       h1 {
         margin: 0;
-        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-size: clamp(1.9rem, 4vw, 2.9rem);
         line-height: 1.1;
       }
 
       p {
         color: var(--muted);
         line-height: 1.6;
+        margin: 14px auto 0;
+        max-width: 620px;
       }
 
       .accent {
-        background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+        background: linear-gradient(120deg, var(--accent), #f4a261);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
 
       .actions {
+        margin-top: 24px;
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 20px;
+        justify-content: center;
       }
 
       .btn {
         border: none;
-        border-radius: 12px;
-        padding: 12px 18px;
+        border-radius: 14px;
+        padding: 12px 28px;
         font-weight: 600;
+        letter-spacing: 0.02em;
         cursor: pointer;
         text-decoration: none;
         display: inline-flex;
@@ -91,7 +95,7 @@
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+        background: linear-gradient(135deg, var(--accent), #f4a261);
         color: white;
       }
 
@@ -101,41 +105,33 @@
         border: 1px solid var(--border);
       }
 
-      .grid {
-        margin-top: 28px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 16px;
+      .reveal {
+        margin-top: 22px;
+        opacity: 0;
+        transform: translateY(8px);
+        pointer-events: none;
+        transition:
+          opacity 220ms ease,
+          transform 220ms ease;
       }
 
-      .card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 20px;
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
       }
 
-      .card h3 {
-        margin-top: 0;
-      }
-
-      .kpis {
-        margin-top: 32px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 14px;
-      }
-
-      .kpi {
-        background: white;
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 16px;
-      }
-
-      .kpi strong {
+      .logo {
+        width: min(240px, 60vw);
+        height: auto;
         display: block;
-        font-size: 1.4rem;
+        margin: 0 auto 14px;
+        border-radius: 14px;
+      }
+
+      .small {
+        font-size: 0.93rem;
+        color: var(--muted);
       }
     </style>
   </head>
@@ -148,58 +144,25 @@
           para LatAm
         </h1>
         <p>
-          Plataforma soberana para empresas que necesitan on-ramp regional,
-          cuentas virtuales y treasury DeFi sobre Starknet, con API empresarial,
-          observabilidad y modelo de cumplimiento.
+          Infraestructura financiera soberana para LatAm: on-ramp, neo-banking y
+          DeFi treasury para equipos de alto desempeño.
         </p>
         <div class="actions">
-          <a href="/" class="btn btn-primary">Ir al dashboard operativo</a>
-          <a href="/#log" class="btn btn-secondary"
-            >Ver trazabilidad operativa</a
-          >
+          <button id="try-btn" class="btn btn-primary" type="button">
+            TRY
+          </button>
         </div>
-      </section>
-
-      <section class="grid" style="margin-top: 20px">
-        <article class="card">
-          <h3>On-Ramp MX (SPEI)</h3>
-          <p>
-            Flujo completo de intentos de depósito, referencia bancaria y
-            conversión a activos digitales.
-          </p>
-        </article>
-        <article class="card">
-          <h3>Neo-Banking</h3>
-          <p>
-            Cuentas virtuales por región (CLABE/PIX/CVU) para conciliación y
-            cobros multi-mercado.
-          </p>
-        </article>
-        <article class="card">
-          <h3>DeFi Yield Treasury</h3>
-          <p>
-            Estrategias de rendimiento para saldos inactivos con control de
-            riesgo por perfil.
-          </p>
-        </article>
-      </section>
-
-      <section class="kpis" id="kpis">
-        <div class="kpi">
-          <span>Disponibilidad objetivo</span>
-          <strong data-target="99.95">0%</strong>
-        </div>
-        <div class="kpi">
-          <span>Tiempo de onboarding</span>
-          <strong data-target="5">0 min</strong>
-        </div>
-        <div class="kpi">
-          <span>Regiones operativas</span>
-          <strong data-target="3">0</strong>
-        </div>
-        <div class="kpi">
-          <span>Versionado API</span>
-          <strong data-target="1">0</strong>
+        <div id="try-reveal" class="reveal" aria-live="polite">
+          <img
+            class="logo"
+            src="https://openthedoorz.com/otd.webp"
+            alt="Open The Doorz logo"
+            loading="lazy"
+          />
+          <p class="small">Stack listo para demo empresarial.</p>
+          <div class="actions" style="margin-top: 10px">
+            <a href="/dash" class="btn btn-secondary">Open App</a>
+          </div>
         </div>
       </section>
     </main>
