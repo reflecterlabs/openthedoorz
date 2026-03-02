@@ -136,7 +136,7 @@ export interface ExplorerConfig {
  *
  * @example
  * ```ts
- * const sdk = new StarkZap({
+ * const sdk = new OpenTheDoorz({
  *   rpcUrl: "https://starknet-mainnet.infura.io/v3/YOUR_KEY",
  *   chainId: ChainId.MAINNET,
  *   staking: {
@@ -151,28 +151,28 @@ export interface StakingConfig {
 }
 
 /**
- * Main configuration for the StarkZap.
+ * Main configuration for Open The Doorz.
  *
  * You can configure using a network preset or custom rpcUrl/chainId.
  *
  * @example
  * ```ts
  * // Using a network preset (recommended)
- * const sdk = new StarkZap({ network: "mainnet" });
- * const sdk = new StarkZap({ network: "sepolia" });
+ * const sdk = new OpenTheDoorz({ network: "mainnet" });
+ * const sdk = new OpenTheDoorz({ network: "sepolia" });
  *
  * // Using a preset object directly
- * import { networks } from "starkzap";
- * const sdk = new StarkZap({ network: networks.mainnet });
+ * import { networks } from "@openthedoorz/sdk";
+ * const sdk = new OpenTheDoorz({ network: networks.mainnet });
  *
  * // Custom configuration
- * const sdk = new StarkZap({
+ * const sdk = new OpenTheDoorz({
  *   rpcUrl: "https://my-rpc.example.com",
  *   chainId: ChainId.MAINNET,
  * });
  *
  * // With custom paymaster endpoint
- * const sdk = new StarkZap({
+ * const sdk = new OpenTheDoorz({
  *   network: "sepolia",
  *   paymaster: { nodeUrl: "https://custom-paymaster.example.com" },
  * });

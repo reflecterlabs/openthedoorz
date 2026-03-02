@@ -1,5 +1,5 @@
 // Main SDK
-export { StarkZap } from "@/sdk";
+export { OpenTheDoorz, StarkZap } from "@/sdk";
 
 // Wallet
 export { Wallet, AccountProvider, BaseWallet } from "@/wallet";
@@ -25,6 +25,15 @@ export * from "@/staking";
 
 // Swap
 export * from "@/swap";
+
+// Banking
+export * from "@/banking";
+
+// On-Ramp
+export * from "@/onramp";
+
+// DeFi
+export * from "@/defi";
 
 // Types
 export * from "@/types";

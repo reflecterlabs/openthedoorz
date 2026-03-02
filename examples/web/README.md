@@ -19,12 +19,16 @@ npm run dev
 
 Open [http://localhost:5173](http://localhost:5173). The Vite dev server hot-reloads both the example and the SDK source thanks to the path aliases configured in `vite.config.ts`.
 
+For the executive presentation site, open [http://localhost:5173/presentation.html](http://localhost:5173/presentation.html).
+
 ## Project Structure
 
 ```
 examples/web/
   index.html          UI layout, styles, and structure (single-page app, no framework)
   main.ts             All connection, deploy, transfer, and UI logic
+  presentation.html   Executive presentation landing for demos and business storytelling
+  presentation.ts     Lightweight interactions for KPI showcase
   vite.config.ts      Vite config with path aliases pointing at the SDK source
   package.json        Scripts and dependencies (links SDK via file:../..)
 

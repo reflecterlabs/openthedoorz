@@ -1,6 +1,6 @@
 import {
   Amount,
-  StarkZap,
+  OpenTheDoorz,
   StarkSigner,
   OnboardStrategy,
   ChainId,
@@ -38,7 +38,7 @@ const presetTokens = Object.values(getPresets(SDK_CHAIN_ID)).sort((a, b) =>
 );
 
 // SDK instance
-const sdk = new StarkZap({
+const sdk = new OpenTheDoorz({
   rpcUrl: RPC_URL,
   chainId: SDK_CHAIN_ID,
 });
@@ -125,6 +125,42 @@ const btnSwapSubmit = document.getElementById(
   "btn-swap-submit"
 ) as HTMLButtonElement;
 const swapQuoteEl = document.getElementById("swap-quote")!;
+const bankUserIdInput = document.getElementById(
+  "bank-user-id"
+) as HTMLInputElement;
+const bankCountrySelect = document.getElementById(
+  "bank-country"
+) as HTMLSelectElement;
+const btnBankAssign = document.getElementById(
+  "btn-bank-assign"
+) as HTMLButtonElement;
+const bankOutputEl = document.getElementById("bank-output")!;
+const speiUserIdInput = document.getElementById(
+  "spei-user-id"
+) as HTMLInputElement;
+const speiAmountInput = document.getElementById(
+  "spei-amount"
+) as HTMLInputElement;
+const speiAssetSelect = document.getElementById(
+  "spei-asset"
+) as HTMLSelectElement;
+const btnSpeiIntent = document.getElementById(
+  "btn-spei-intent"
+) as HTMLButtonElement;
+const speiOutputEl = document.getElementById("spei-output")!;
+const yieldVaultSelect = document.getElementById(
+  "yield-vault"
+) as HTMLSelectElement;
+const yieldAmountInput = document.getElementById(
+  "yield-amount"
+) as HTMLInputElement;
+const btnYieldEstimate = document.getElementById(
+  "btn-yield-estimate"
+) as HTMLButtonElement;
+const btnYieldOpen = document.getElementById(
+  "btn-yield-open"
+) as HTMLButtonElement;
+const yieldOutputEl = document.getElementById("yield-output")!;
 
 // Preset mapping
 const presets: Record<string, AccountClassConfig> = {
@@ -335,6 +371,134 @@ function initializeSwapForm(): void {
   updateSwapButtons();
 }
 
+function renderDataBox(target: Element, rows: Array<[string, string]>): void {
+  target.innerHTML = rows
+    .map(
+      ([label, value]) =>
+        `<div class="quote-row"><span class="quote-label">${label}</span><span class="quote-value">${value}</span></div>`
+    )
+    .join("");
+  target.classList.remove("hidden");
+}
+
+function initializeYieldVaults(): void {
+  yieldVaultSelect.innerHTML = "";
+  const vaults = sdk.defi.listVaults();
+  for (const vault of vaults) {
+    const option = document.createElement("option");
+    option.value = vault.id;
+    option.textContent = `${vault.name} · APY ${(vault.apyBps / 100).toFixed(2)}%`;
+    yieldVaultSelect.appendChild(option);
+  }
+}
+
+function resolveUserId(): string {
+  const value = bankUserIdInput.value.trim() || speiUserIdInput.value.trim();
+  if (value.length > 0) {
+    return value;
+  }
+  if (wallet) {
+    return wallet.address;
+  }
+  return "demo-user";
+}
+
+function assignVirtualAccount(): void {
+  const userId = bankUserIdInput.value.trim() || resolveUserId();
+  if (!userId) {
+    log("Define una identidad de cliente para asignar cuenta virtual", "error");
+    return;
+  }
+
+  const account = sdk.banking.assign({
+    userId,
+    country: bankCountrySelect.value as "MX" | "BR" | "AR",
+  });
+
+  renderDataBox(bankOutputEl, [
+    ["Cliente", account.userId],
+    ["Alias", account.alias],
+    ["Riel", account.rails.join(", ")],
+    ["CLABE", account.clabe ?? "—"],
+    ["PIX", account.pixKey ?? "—"],
+    ["CVU", account.cvu ?? "—"],
+  ]);
+  log(`Cuenta virtual asignada para ${account.userId}`, "success");
+}
+
+function createSpeiIntent(): void {
+  const userId = speiUserIdInput.value.trim() || resolveUserId();
+  const amountMxn = Number(speiAmountInput.value);
+  if (!Number.isFinite(amountMxn) || amountMxn <= 0) {
+    log("Ingresa un monto MXN válido para generar SPEI", "error");
+    return;
+  }
+
+  const intent = sdk.onramp.spei.createDepositIntent({
+    userId,
+    amountMxn,
+    targetAsset: speiAssetSelect.value as "USDC" | "ETH",
+  });
+
+  renderDataBox(speiOutputEl, [
+    ["Beneficiario", intent.beneficiary],
+    ["CLABE", intent.clabe],
+    ["Referencia", intent.reference],
+    ["Monto MXN", intent.amountMxn.toFixed(2)],
+    ["Activo destino", intent.targetAsset],
+    ["Estimado", `${intent.expectedAssetAmount}`],
+    ["Estado", intent.status],
+  ]);
+  log(`Instrucción SPEI creada (${intent.reference})`, "success");
+}
+
+function estimateYield(): void {
+  const vaultId = yieldVaultSelect.value;
+  const amount = Number(yieldAmountInput.value);
+  if (!Number.isFinite(amount) || amount <= 0) {
+    log("Ingresa un monto válido para estimar rendimiento", "error");
+    return;
+  }
+
+  const yearly = sdk.defi.estimateYearlyReturn(vaultId, amount);
+  const vault = sdk.defi.listVaults().find((item) => item.id === vaultId);
+  if (!vault) {
+    log("Selecciona una estrategia válida", "error");
+    return;
+  }
+
+  renderDataBox(yieldOutputEl, [
+    ["Estrategia", vault.name],
+    ["APY", `${(vault.apyBps / 100).toFixed(2)}%`],
+    ["Monto", amount.toFixed(2)],
+    ["Rendimiento anual estimado", yearly.toFixed(2)],
+    ["Perfil", vault.riskTier],
+  ]);
+  log(`Estimación DeFi generada para ${vault.name}`, "info");
+}
+
+function openYieldPosition(): void {
+  const vaultId = yieldVaultSelect.value;
+  const amount = Number(yieldAmountInput.value);
+  if (!Number.isFinite(amount) || amount <= 0) {
+    log("Ingresa un monto válido para activar estrategia", "error");
+    return;
+  }
+
+  const userId = resolveUserId();
+  const position = sdk.defi.openPosition({ userId, vaultId, amount });
+  const activePositions = sdk.defi.getPositionsByUser(userId).length;
+
+  renderDataBox(yieldOutputEl, [
+    ["Posición", position.id],
+    ["Cliente", position.userId],
+    ["Estrategia", position.vaultId],
+    ["Capital", position.amount.toFixed(2)],
+    ["Posiciones activas", `${activePositions}`],
+  ]);
+  log(`Estrategia activada para ${userId}`, "success");
+}
+
 // Logging
 function log(
   message: string,
@@ -352,12 +516,12 @@ function log(
 function showConnected() {
   walletSection.classList.add("visible");
   const labels: Record<string, string> = {
-    cartridge: "Cartridge Wallet",
-    privatekey: "Private Key Wallet",
-    privy: "Privy Wallet",
+    cartridge: "Bóveda Cartridge",
+    privatekey: "Bóveda con Llave Privada",
+    privy: "Bóveda Privy",
   };
   walletTypeLabelEl.textContent =
-    labels[walletType || ""] || "Connected Wallet";
+    labels[walletType || ""] || "Cuenta Conectada";
   updateSwapButtons();
 }
 
@@ -409,7 +573,7 @@ async function checkDeploymentStatus() {
     const deployed = await wallet.isDeployed();
     setStatus(deployed ? "deployed" : "not-deployed");
     log(
-      `Account is ${deployed ? "deployed ✓" : "not deployed"}`,
+      `Cuenta ${deployed ? "desplegada ✓" : "sin desplegar"}`,
       deployed ? "success" : "info"
     );
   } catch (err) {
@@ -841,6 +1005,10 @@ btnTransferSponsored.addEventListener("click", testSponsoredTransfer);
 btnDisconnect.addEventListener("click", disconnect);
 btnSwapQuote.addEventListener("click", fetchSwapQuote);
 btnSwapSubmit.addEventListener("click", submitSwap);
+btnBankAssign.addEventListener("click", assignVirtualAccount);
+btnSpeiIntent.addEventListener("click", createSpeiIntent);
+btnYieldEstimate.addEventListener("click", estimateYield);
+btnYieldOpen.addEventListener("click", openYieldPosition);
 
 swapProviderSelect.addEventListener("change", () => {
   clearSwapQuote();
@@ -895,4 +1063,5 @@ btnGenerateKey.addEventListener("click", () => {
 
 // Initial log
 initializeSwapForm();
-log(`SDK initialized with RPC: ${RPC_URL}`, "info");
+initializeYieldVaults();
+log(`Open The Doorz inicializado sobre RPC: ${RPC_URL}`, "info");

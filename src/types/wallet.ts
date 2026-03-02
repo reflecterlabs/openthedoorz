@@ -11,7 +11,7 @@ import type { SwapProvider } from "@/swap/interface";
  * @example
  * ```ts
  * // Use a preset
- * import { OpenZeppelinPreset } from "starkzap";
+ * import { OpenZeppelinPreset } from "@openthedoorz/sdk";
  * { accountClass: OpenZeppelinPreset }
  *
  * // Or define custom
@@ -44,7 +44,7 @@ export interface AccountClassConfig {
  *
  * @example
  * ```ts
- * import { StarkSigner, OpenZeppelinPreset } from "starkzap";
+ * import { StarkSigner, OpenZeppelinPreset } from "@openthedoorz/sdk";
  *
  * {
  *   signer: new StarkSigner(privateKey),
@@ -75,7 +75,7 @@ export type FeeMode = "sponsored" | "user_pays";
  *
  * @example
  * ```ts
- * import { StarkSigner, ArgentPreset } from "starkzap";
+ * import { StarkSigner, ArgentPreset } from "@openthedoorz/sdk";
  *
  * // User pays fees
  * await sdk.connectWallet({

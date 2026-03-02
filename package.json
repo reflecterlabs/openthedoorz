@@ -50,6 +50,12 @@
   },
   "scripts": {
     "build": "tsc; tsc-alias",
+    "build:testnet": "npm run build && npm run build --prefix examples/web",
+    "deploy:mainnet": "npm run build:testnet && npm run docs:export",
+    "dev:web": "npm run dev --prefix examples/web",
+    "dev:server": "npx tsx examples/server/server.ts",
+    "dev:all": "npm run dev:all --prefix examples/web",
+    "pipeline:local": "npm run prettier:check && npm run lint && npm run typecheck && npm run test && npm run build:testnet",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "fix": "eslint . --fix",

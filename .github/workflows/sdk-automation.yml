@@ -1,0 +1,88 @@
+name: SDK Automation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: "0"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run -s lint
+
+      - name: Typecheck
+        run: npm run -s typecheck
+
+      - name: Unit tests
+        run: npm run -s test
+
+      - name: Build SDK
+        run: npm run -s build
+
+      - name: Build API docs
+        run: npm run -s docs:api
+
+      - name: Pack SDK artifact
+        run: npm pack --pack-destination /tmp
+
+      - name: Upload SDK tarball
+        uses: actions/upload-artifact@v4
+        with:
+          name: sdk-package
+          path: /tmp/*.tgz
+
+      - name: Upload API docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-docs
+          path: docs/api/**
+
+  web-presentation:
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: "0"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            examples/web/package-lock.json
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Build root package
+        run: npm run -s build
+
+      - name: Install web dependencies
+        run: npm ci --prefix examples/web --ignore-scripts
+
+      - name: Build web app + presentation
+        run: npm run -s build --prefix examples/web

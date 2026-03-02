@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "postinstall": "cd ../.. && npm run build"
+    "postinstall": "cd ../.. && npm run build",
+    "dev": "tsx server.ts",
+    "start": "tsx server.ts"
   },
   "dependencies": {
     "@privy-io/node": "^0.8.0",

@@ -8,10 +8,11 @@ export default defineConfig({
   resolve: {
     alias: {
       starkzap: path.resolve(__dirname, "../../src/index.ts"),
+      "@openthedoorz/sdk": path.resolve(__dirname, "../../src/index.ts"),
       "@": path.resolve(__dirname, "../../src"),
     },
   },
   optimizeDeps: {
-    exclude: ["starkzap"],
+    exclude: ["starkzap", "@openthedoorz/sdk"],
   },
 });

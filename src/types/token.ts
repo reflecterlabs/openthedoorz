@@ -6,7 +6,7 @@ import type { Address } from "@/types/address";
  * @example
  * ```ts
  * // Use a preset
- * import { TBTC, USDC } from "starkzap";
+ * import { TBTC, USDC } from "@openthedoorz/sdk";
  * sdk.erc20({ token: TBTC });
  *
  * // Or define custom

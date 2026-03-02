@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open The Doorz | Infraestructura Soberana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #fdfbf7;
+        --accent: #ff5733;
+        --accent-soft: #f4a261;
+        --text: #2f241f;
+        --muted: #6f6157;
+        --card: rgba(255, 255, 255, 0.64);
+        --border: rgba(255, 87, 51, 0.18);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Outfit", system-ui, sans-serif;
+        background:
+          radial-gradient(
+            circle at 10% 0%,
+            rgba(255, 87, 51, 0.12) 0,
+            transparent 40%
+          ),
+          var(--bg);
+        color: var(--text);
+      }
+
+      .container {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+      }
+
+      .hero {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        box-shadow: 0 20px 50px rgba(80, 58, 47, 0.08);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.1;
+      }
+
+      p {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .accent {
+        background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+        color: white;
+      }
+
+      .btn-secondary {
+        background: white;
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+
+      .grid {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 20px;
+      }
+
+      .card h3 {
+        margin-top: 0;
+      }
+
+      .kpis {
+        margin-top: 32px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 14px;
+      }
+
+      .kpi {
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .kpi strong {
+        display: block;
+        font-size: 1.4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <h1>
+          Open The Doorz
+          <span class="accent">Financial Infrastructure</span>
+          para LatAm
+        </h1>
+        <p>
+          Plataforma soberana para empresas que necesitan on-ramp regional,
+          cuentas virtuales y treasury DeFi sobre Starknet, con API empresarial,
+          observabilidad y modelo de cumplimiento.
+        </p>
+        <div class="actions">
+          <a href="/" class="btn btn-primary">Ir al dashboard operativo</a>
+          <a href="/#log" class="btn btn-secondary"
+            >Ver trazabilidad operativa</a
+          >
+        </div>
+      </section>
+
+      <section class="grid" style="margin-top: 20px">
+        <article class="card">
+          <h3>On-Ramp MX (SPEI)</h3>
+          <p>
+            Flujo completo de intentos de depósito, referencia bancaria y
+            conversión a activos digitales.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Neo-Banking</h3>
+          <p>
+            Cuentas virtuales por región (CLABE/PIX/CVU) para conciliación y
+            cobros multi-mercado.
+          </p>
+        </article>
+        <article class="card">
+          <h3>DeFi Yield Treasury</h3>
+          <p>
+            Estrategias de rendimiento para saldos inactivos con control de
+            riesgo por perfil.
+          </p>
+        </article>
+      </section>
+
+      <section class="kpis" id="kpis">
+        <div class="kpi">
+          <span>Disponibilidad objetivo</span>
+          <strong data-target="99.95">0%</strong>
+        </div>
+        <div class="kpi">
+          <span>Tiempo de onboarding</span>
+          <strong data-target="5">0 min</strong>
+        </div>
+        <div class="kpi">
+          <span>Regiones operativas</span>
+          <strong data-target="3">0</strong>
+        </div>
+        <div class="kpi">
+          <span>Versionado API</span>
+          <strong data-target="1">0</strong>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/presentation.ts"></script>
+  </body>
+</html>

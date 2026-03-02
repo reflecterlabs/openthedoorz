@@ -20,6 +20,9 @@ import {
   accountPresets,
   type AccountPresetName,
 } from "@/account";
+import { VirtualAccountsService } from "@/banking";
+import { SPEIProvider } from "@/onramp";
+import { DeFiYieldService } from "@/defi";
 
 /** Resolved SDK configuration with required rpcUrl and chainId */
 interface ResolvedConfig extends Omit<SDKConfig, "rpcUrl" | "chainId"> {
@@ -49,18 +52,18 @@ function isWebRuntimeForCartridge(): boolean {
 }
 
 /**
- * Main SDK class for Starknet wallet integration.
+ * Main SDK class for Open The Doorz financial infrastructure.
  *
  * @example
  * ```ts
- * import { StarkZap, StarkSigner, ArgentPreset } from "starkzap";
+ * import { OpenTheDoorz, StarkSigner, ArgentPreset } from "@openthedoorz/sdk";
  *
  * // Using network presets (recommended)
- * const sdk = new StarkZap({ network: "mainnet" });
- * const sdk = new StarkZap({ network: "sepolia" });
+ * const sdk = new OpenTheDoorz({ network: "mainnet" });
+ * const sdk = new OpenTheDoorz({ network: "sepolia" });
  *
  * // Or with custom RPC
- * const sdk = new StarkZap({
+ * const sdk = new OpenTheDoorz({
  *   rpcUrl: "https://my-rpc.example.com",
  *   chainId: ChainId.MAINNET,
  * });
@@ -76,14 +79,22 @@ function isWebRuntimeForCartridge(): boolean {
  * await tx.wait();
  * ```
  */
-export class StarkZap {
+export class OpenTheDoorz {
   private readonly config: ResolvedConfig;
   private readonly provider: RpcProvider;
   private chainValidationPromise: Promise<void> | null = null;
+  readonly banking: VirtualAccountsService;
+  readonly onramp: { spei: SPEIProvider };
+  readonly defi: DeFiYieldService;
 
   constructor(config: SDKConfig) {
     this.config = this.resolveConfig(config);
     this.provider = new RpcProvider({ nodeUrl: this.config.rpcUrl });
+    this.banking = new VirtualAccountsService();
+    this.onramp = {
+      spei: new SPEIProvider({ chainId: this.config.chainId }),
+    };
+    this.defi = new DeFiYieldService({ chainId: this.config.chainId });
   }
 
   private resolveConfig(config: SDKConfig): ResolvedConfig {
@@ -100,7 +111,7 @@ export class StarkZap {
     const rpcUrl = config.rpcUrl ?? networkPreset?.rpcUrl;
     if (!rpcUrl) {
       throw new Error(
-        "StarkZap requires either 'network' or 'rpcUrl' to be specified"
+        "OpenTheDoorz requires either 'network' or 'rpcUrl' to be specified"
       );
     }
     const normalizedRpcUrl = assertSafeHttpUrl(rpcUrl, "rpcUrl").toString();
@@ -109,7 +120,7 @@ export class StarkZap {
     const chainId = config.chainId ?? networkPreset?.chainId;
     if (!chainId) {
       throw new Error(
-        "StarkZap requires either 'network' or 'chainId' to be specified"
+        "OpenTheDoorz requires either 'network' or 'chainId' to be specified"
       );
     }
 
@@ -172,7 +183,7 @@ export class StarkZap {
    *
    * @example
    * ```ts
-   * import { StarkSigner, OpenZeppelinPreset, ArgentPreset } from "starkzap";
+   * import { StarkSigner, OpenZeppelinPreset, ArgentPreset } from "@openthedoorz/sdk";
    *
    * // Default: OpenZeppelin account
    * const wallet = await sdk.connectWallet({
@@ -481,3 +492,5 @@ export class StarkZap {
     return this.provider.callContract(call);
   }
 }
+
+export const StarkZap = OpenTheDoorz;

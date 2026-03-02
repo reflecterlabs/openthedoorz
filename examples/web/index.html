@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>X SDK Playground</title>
+    <title>Open The Doorz | Dashboard Soberano</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,17 +12,17 @@
     />
     <style>
       :root {
-        --bg-primary: #0a0a0f;
-        --bg-secondary: #12121a;
-        --bg-tertiary: #1a1a26;
-        --accent-primary: #00d4aa;
-        --accent-secondary: #7c3aed;
-        --accent-gradient: linear-gradient(135deg, #00d4aa 0%, #7c3aed 100%);
-        --text-primary: #f0f0f5;
-        --text-secondary: #8888a0;
-        --text-muted: #55556a;
-        --border-color: #2a2a3a;
-        --success: #00d4aa;
+        --bg-primary: #fdfbf7;
+        --bg-secondary: rgba(255, 255, 255, 0.6);
+        --bg-tertiary: rgba(255, 255, 255, 0.8);
+        --accent-primary: #ff5733;
+        --accent-secondary: #e07a5f;
+        --accent-gradient: linear-gradient(135deg, #ff5733 0%, #f4a261 100%);
+        --text-primary: #2f241f;
+        --text-secondary: #6f6157;
+        --text-muted: #8d7f72;
+        --border-color: rgba(255, 87, 51, 0.18);
+        --success: #2f855a;
         --warning: #f59e0b;
         --error: #ef4444;
         --font-sans: "Outfit", system-ui, sans-serif;
@@ -37,7 +37,13 @@
 
       body {
         font-family: var(--font-sans);
-        background: var(--bg-primary);
+        background:
+          radial-gradient(
+            circle at 20% 0%,
+            rgba(255, 87, 51, 0.12) 0,
+            transparent 45%
+          ),
+          var(--bg-primary);
         color: var(--text-primary);
         min-height: 100vh;
         line-height: 1.6;
@@ -76,6 +82,8 @@
         border-radius: 16px;
         padding: 1.75rem;
         margin-bottom: 1.5rem;
+        box-shadow: 0 10px 30px rgba(93, 64, 55, 0.08);
+        backdrop-filter: blur(10px);
       }
 
       .card-title {
@@ -136,7 +144,7 @@
 
       .btn-primary:hover:not(:disabled) {
         transform: translateY(-2px);
-        box-shadow: 0 8px 24px rgba(0, 212, 170, 0.3);
+        box-shadow: 0 8px 24px rgba(255, 87, 51, 0.3);
       }
 
       .btn-secondary {
@@ -146,7 +154,7 @@
       }
 
       .btn-secondary:hover:not(:disabled) {
-        background: var(--border-color);
+        background: rgba(255, 87, 51, 0.08);
       }
 
       .btn-disconnect {
@@ -335,6 +343,12 @@
         background: var(--bg-tertiary);
       }
 
+      .module-card {
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--border-color);
+      }
+
       .swap-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -471,13 +485,16 @@
   <body>
     <div class="app">
       <header>
-        <h1>X SDK</h1>
-        <p class="subtitle">Wallet Integration Playground</p>
+        <h1>Open The Doorz</h1>
+        <p class="subtitle">
+          Infraestructura soberana para On-Ramp, Neo-Banking y DeFi en
+          Latinoamérica
+        </p>
       </header>
 
       <!-- Connection Options -->
       <div id="connect-section" class="card">
-        <div class="card-title">Connect Wallet</div>
+        <div class="card-title">Onboarding Ejecutivo</div>
 
         <div class="connect-grid" style="grid-template-columns: 1fr 1fr">
           <button id="btn-cartridge" class="btn btn-cartridge">
@@ -527,14 +544,14 @@
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             </svg>
-            Private Key
+            Llave Privada
           </button>
         </div>
 
         <div id="pk-form" class="hidden">
-          <div class="divider">Enter credentials</div>
+          <div class="divider">Credenciales de custodia</div>
           <div class="form-group">
-            <label for="private-key">Private Key</label>
+            <label for="private-key">Llave Privada</label>
             <div style="display: flex; gap: 0.5rem">
               <input
                 type="password"
@@ -554,7 +571,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="account-preset">Account Type</label>
+            <label for="account-preset">Tipo de Cuenta</label>
             <select id="account-preset">
               <option value="openzeppelin">OpenZeppelin</option>
               <option value="argent">Argent</option>
@@ -569,13 +586,13 @@
               class="btn btn-primary"
               style="width: 100%"
             >
-              Connect
+              Conectar
             </button>
           </div>
         </div>
 
         <div id="privy-form" class="hidden">
-          <div class="divider">Privy Connection</div>
+          <div class="divider">Conexión Privy</div>
           <div class="form-group">
             <label for="privy-email">Email</label>
             <input
@@ -586,7 +603,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="privy-account-preset">Account Type</label>
+            <label for="privy-account-preset">Tipo de Cuenta</label>
             <select id="privy-account-preset">
               <option value="openzeppelin">OpenZeppelin</option>
               <option value="argent">Argent</option>
@@ -602,8 +619,9 @@
               margin-bottom: 1rem;
             "
           >
-            Enter your email to register or login.<br />
-            Privy provides the signer, you choose the account contract.
+            Ingresa tu correo para registrarte o iniciar sesión.<br />
+            Privy gestiona el signer y Open The Doorz opera la lógica
+            financiera.
           </p>
           <div class="form-group">
             <button
@@ -614,7 +632,7 @@
                 background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
               "
             >
-              Register / Login
+              Registrar / Ingresar
             </button>
           </div>
         </div>
@@ -623,11 +641,11 @@
       <!-- Wallet Info (shown when connected) -->
       <div id="wallet-section" class="card wallet-info">
         <div class="card-title">
-          <span id="wallet-type-label">Connected Wallet</span>
+          <span id="wallet-type-label">Cuenta Conectada</span>
         </div>
 
         <div class="info-row">
-          <span class="info-label">Address</span>
+          <span class="info-label">Dirección</span>
           <span id="wallet-address" class="info-value address">—</span>
           <button
             id="btn-copy-address"
@@ -639,7 +657,7 @@
         </div>
 
         <div class="info-row">
-          <span class="info-label">Status</span>
+          <span class="info-label">Estado</span>
           <span id="wallet-status" class="status-badge status-checking"
             >Checking...</span
           >
@@ -647,13 +665,13 @@
 
         <div class="actions">
           <button id="btn-check-deployed" class="btn btn-secondary">
-            Check Status
+            Verificar Estado
           </button>
           <button id="btn-deploy" class="btn btn-primary">
-            Deploy Account
+            Desplegar Cuenta
           </button>
           <button id="btn-transfer" class="btn btn-primary">
-            Test Transfer
+            Transferencia de Prueba
           </button>
           <button
             id="btn-transfer-sponsored"
@@ -663,32 +681,34 @@
               color: white;
             "
           >
-            Sponsored Tx
+            Tx Patrocinada
           </button>
           <button id="btn-disconnect" class="btn btn-disconnect">
-            Disconnect
+            Desconectar
           </button>
         </div>
 
         <div class="swap-card">
-          <div class="card-title" style="margin-bottom: 0.75rem">Swap</div>
+          <div class="card-title" style="margin-bottom: 0.75rem">
+            Conversión de Activos
+          </div>
           <div class="form-group">
-            <label for="swap-provider">Source</label>
+            <label for="swap-provider">Proveedor</label>
             <select id="swap-provider"></select>
           </div>
           <div class="swap-grid">
             <div class="form-group">
-              <label for="swap-token-in">Token In</label>
+              <label for="swap-token-in">Token de Entrada</label>
               <select id="swap-token-in"></select>
             </div>
             <div class="form-group">
-              <label for="swap-token-out">Token Out</label>
+              <label for="swap-token-out">Token de Salida</label>
               <select id="swap-token-out"></select>
             </div>
           </div>
           <div class="swap-grid">
             <div class="form-group">
-              <label for="swap-amount">Amount In</label>
+              <label for="swap-amount">Monto</label>
               <input id="swap-amount" type="text" placeholder="0.001" />
             </div>
             <div class="form-group">
@@ -706,18 +726,108 @@
           <div class="form-group swap-inline">
             <input id="swap-sponsored" type="checkbox" />
             <label for="swap-sponsored" style="margin: 0"
-              >Use sponsored fee mode</label
+              >Usar modo patrocinado</label
             >
           </div>
           <div class="actions" style="margin-top: 0.75rem">
             <button id="btn-swap-quote" class="btn btn-secondary">
-              Get Quote
+              Cotizar
             </button>
             <button id="btn-swap-submit" class="btn btn-primary">
-              Submit Swap
+              Ejecutar Conversión
             </button>
           </div>
           <div id="swap-quote" class="quote-box hidden"></div>
+        </div>
+
+        <div class="module-card">
+          <div class="card-title" style="margin-bottom: 0.75rem">
+            Cuentas Virtuales (Neo-Banking)
+          </div>
+          <div class="swap-grid">
+            <div class="form-group">
+              <label for="bank-user-id">Identidad del Cliente</label>
+              <input id="bank-user-id" type="text" placeholder="cliente-001" />
+            </div>
+            <div class="form-group">
+              <label for="bank-country">Riel Regional</label>
+              <select id="bank-country">
+                <option value="MX">México (SPEI/CLABE)</option>
+                <option value="BR">Brasil (PIX)</option>
+                <option value="AR">Argentina (CVU)</option>
+              </select>
+            </div>
+          </div>
+          <div class="actions" style="margin-top: 0.75rem">
+            <button id="btn-bank-assign" class="btn btn-primary">
+              Asignar Cuenta Virtual
+            </button>
+          </div>
+          <div id="bank-output" class="quote-box hidden"></div>
+        </div>
+
+        <div class="module-card">
+          <div class="card-title" style="margin-bottom: 0.75rem">
+            On-Ramp México (SPEI)
+          </div>
+          <div class="swap-grid">
+            <div class="form-group">
+              <label for="spei-user-id">Identidad del Cliente</label>
+              <input id="spei-user-id" type="text" placeholder="cliente-001" />
+            </div>
+            <div class="form-group">
+              <label for="spei-amount">Monto MXN</label>
+              <input
+                id="spei-amount"
+                type="number"
+                min="1"
+                placeholder="2500"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="spei-asset">Activo Destino</label>
+            <select id="spei-asset">
+              <option value="USDC">USDC</option>
+              <option value="ETH">ETH</option>
+            </select>
+          </div>
+          <div class="actions" style="margin-top: 0.75rem">
+            <button id="btn-spei-intent" class="btn btn-primary">
+              Generar Instrucción SPEI
+            </button>
+          </div>
+          <div id="spei-output" class="quote-box hidden"></div>
+        </div>
+
+        <div class="module-card">
+          <div class="card-title" style="margin-bottom: 0.75rem">
+            DeFi Yield
+          </div>
+          <div class="swap-grid">
+            <div class="form-group">
+              <label for="yield-vault">Estrategia</label>
+              <select id="yield-vault"></select>
+            </div>
+            <div class="form-group">
+              <label for="yield-amount">Monto</label>
+              <input
+                id="yield-amount"
+                type="number"
+                min="1"
+                placeholder="1000"
+              />
+            </div>
+          </div>
+          <div class="actions" style="margin-top: 0.75rem">
+            <button id="btn-yield-estimate" class="btn btn-secondary">
+              Estimar Rendimiento
+            </button>
+            <button id="btn-yield-open" class="btn btn-primary">
+              Activar Estrategia
+            </button>
+          </div>
+          <div id="yield-output" class="quote-box hidden"></div>
         </div>
       </div>
 
@@ -725,7 +835,7 @@
       <div class="card">
         <div class="card-title">Activity Log</div>
         <div id="log" class="log-container">
-          <div class="log-entry">Ready to connect...</div>
+          <div class="log-entry">Panel listo para operar.</div>
         </div>
       </div>
     </div>

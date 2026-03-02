@@ -19,7 +19,7 @@ export default defineConfig({
             label: "unit",
             color: "blue",
           },
-          include: ["tests/**/*.test.ts"],
+          include: ["tests/**/*.test.ts", ".Tests/**/*.test.ts"],
           exclude: ["tests/integration/**/*.test.ts", "**/node_modules/**"],
           testTimeout: 30_000,
         },
